@@ -16,7 +16,7 @@ public class StaffService extends DVDService<Staff, StaffRepository> {
     }
 
     @Transactional
-    public void updateStaff(Long staffId, String firstName, String lastName, Long addressId, String email, Long storeId,
+    public void update(Long staffId, String firstName, String lastName, Long addressId, String email, Long storeId,
                             String username, String password) {
         Staff staff = repo.findById(staffId).orElseThrow(
                 () -> new IllegalArgumentException("No staff with such id.")

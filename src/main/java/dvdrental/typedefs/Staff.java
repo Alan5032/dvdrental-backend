@@ -9,7 +9,7 @@ public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "staff_id")
-    private Long id;
+    private Long staffId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -28,9 +28,9 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(Long id, String firstName, String lastName, Long addressId, String email, Long storeId,
+    public Staff(Long staffId, String firstName, String lastName, Long addressId, String email, Long storeId,
                  String username, String password) {
-        this.id = id;
+        this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressId = addressId;
@@ -40,12 +40,12 @@ public class Staff {
         this.password = password;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setStaffId(Long staffId) {
+        this.staffId = staffId;
     }
 
-    public long getId() {
-        return this.id;
+    public long getStaffId() {
+        return this.staffId;
     }
 
     public void setFirstName(String firstName) {

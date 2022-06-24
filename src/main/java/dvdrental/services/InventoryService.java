@@ -21,7 +21,8 @@ public class InventoryService extends DVDService<Inventory, InventoryRepository>
         this.filmRepository = filmRepository;
     }
 
-    public List<Inventory> getInventories() {
+    @Override
+    public List<Inventory> getAll() {
         List<Inventory> inventories = repo.findAll();
         for (Inventory inv : inventories) {
             String filmTitle = filmRepository.getReferenceById(inv.getFilmId()).getFilmTitle();
@@ -31,7 +32,8 @@ public class InventoryService extends DVDService<Inventory, InventoryRepository>
 
     }
 
-    public Inventory getInventory(Long inventoryId) {
+    @Override
+    public Inventory get(Long inventoryId) {
         Inventory inventory = repo.findById(inventoryId).orElseThrow(
                 () -> new IllegalArgumentException("No inventory with such id.")
         );

@@ -66,7 +66,7 @@ public class DVDController {
                             @RequestParam(required = false) String email, @RequestParam(required = false) Long storeId,
                             @RequestParam(required = false) String username,
                             @RequestParam(required = false) String password) {
-        staffService.updateStaff(staffId, firstName, lastName, addressId, email, storeId, username, password);
+        staffService.update(staffId, firstName, lastName, addressId, email, storeId, username, password);
     }
 
     @GetMapping(value = "/customers")
@@ -122,7 +122,7 @@ public class DVDController {
     @PutMapping(value = "/locations/{storeId}")
     public void updateLocation(@PathVariable("storeId") Long storeId, @RequestParam(required = false) Long managerId,
                                @RequestParam(required = false) Long addressId) {
-        storeService.updateLocation(storeId, managerId, addressId);
+        storeService.update(storeId, managerId, addressId);
     }
 
     @GetMapping(value = "/rentals")
@@ -157,12 +157,12 @@ public class DVDController {
 
     @GetMapping(value = "/inventory")
     public List<Inventory> getInventories() {
-        return inventoryService.getInventories();
+        return inventoryService.getAll();
     }
 
     @GetMapping(value = "/inventory/{inventoryId}")
     public Inventory getInventory(@PathVariable("inventoryId") Long inventoryId) {
-        return inventoryService.getInventory(inventoryId);
+        return inventoryService.get(inventoryId);
     }
 
     @PostMapping(value = "/inventory")

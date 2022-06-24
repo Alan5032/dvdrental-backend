@@ -16,7 +16,7 @@ public class StoreService extends DVDService<Store, StoreRepository> {
     }
 
     @Transactional
-    public void updateLocation(Long storeId, Long managerId, Long addressId) {
+    public void update(Long storeId, Long managerId, Long addressId) {
         Store store = repo.findById(storeId).orElseThrow(
                 () -> new IllegalArgumentException("No store with such id.")
         );
