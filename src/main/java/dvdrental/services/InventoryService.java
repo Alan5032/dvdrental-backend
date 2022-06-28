@@ -1,6 +1,7 @@
 package dvdrental.services;
 
 import dvdrental.repositories.FilmRepository;
+import dvdrental.typedefs.Film;
 import dvdrental.typedefs.Inventory;
 import dvdrental.repositories.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,12 @@ public class InventoryService extends DVDService<Inventory, InventoryRepository>
     @Override
     public List<Inventory> getAll() {
         List<Inventory> inventories = repo.findAll();
-        for (Inventory inv : inventories) {
-            String filmTitle = filmRepository.getReferenceById(inv.getFilmId()).getFilmTitle();
-            inv.setFilmTitle(filmTitle);
+        for (Inventory inventory : inventories) {
+            Film film = filmRepository.findById(inventory.getFilmId()).orElseThrow(
+                    () -> new IllegalArgumentException("No film with inventory's film ID.")
+            );
+            String filmTitle = film.getFilmTitle();
+            inventory.setFilmTitle(filmTitle);
         }
         return inventories;
 
@@ -37,7 +41,10 @@ public class InventoryService extends DVDService<Inventory, InventoryRepository>
         Inventory inventory = repo.findById(inventoryId).orElseThrow(
                 () -> new IllegalArgumentException("No inventory with such id.")
         );
-        String filmTitle = filmRepository.getReferenceById(inventory.getFilmId()).getFilmTitle();
+        Film film = filmRepository.findById(inventory.getFilmId()).orElseThrow(
+                () -> new IllegalArgumentException("No film with inventory's film ID.")
+        );
+        String filmTitle = film.getFilmTitle();
         inventory.setFilmTitle(filmTitle);
         return inventory;
     }
