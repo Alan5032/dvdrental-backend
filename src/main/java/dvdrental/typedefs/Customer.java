@@ -37,7 +37,7 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public long getCustomerId() {
+    public Long getCustomerId() {
         return this.customerId;
     }
 
