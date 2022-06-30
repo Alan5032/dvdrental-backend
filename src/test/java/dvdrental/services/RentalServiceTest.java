@@ -36,8 +36,8 @@ public class RentalServiceTest {
     void beforeEach() {
         rentals = new ArrayList<>();
 
-        rentals.add(new Rental(99999L, time, 88888L, 77777L, time, 66666L));
-        rentals.add(new Rental(1L, time, 2L, 3L, time, 4L));
+        rentals.add(new Rental(time, 88888L, 77777L, time, 66666L));
+        rentals.add(new Rental(time, 2L, 3L, time, 4L));
     }
 
     @Test

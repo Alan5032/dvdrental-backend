@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 public class StaffTest {
 
-    private final Long staffId = 99999L;
     private final Long storeId = 1L;
     private final String firstName = "Random";
     private final String lastName = "Person";
@@ -22,12 +21,7 @@ public class StaffTest {
     @BeforeEach
     void beforeEach() {
         staff1 = new Staff();
-        staff2 = new Staff(staffId, firstName, lastName, addressId, email, storeId, username, password);
-    }
-
-    @Test
-    void constructedGetId() {
-        assertEquals(staffId, staff2.getStaffId());
+        staff2 = new Staff(firstName, lastName, addressId, email, storeId, username, password);
     }
 
     @Test
@@ -67,6 +61,7 @@ public class StaffTest {
 
     @Test
     void setStaffId() {
+        Long staffId = 99999L;
         staff1.setStaffId(staffId);
         assertEquals(staffId, staff1.getStaffId());
     }

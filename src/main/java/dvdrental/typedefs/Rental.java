@@ -1,11 +1,6 @@
 package dvdrental.typedefs;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -13,7 +8,8 @@ import java.time.OffsetDateTime;
 public class Rental {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rental_gen")
+    @SequenceGenerator(name = "rental_gen", sequenceName = "rental_rental_id_seq", allocationSize = 1)
     @Column(name = "rental_id")
     private Long rentalId;
     @Column(name = "rental_date")
@@ -30,9 +26,8 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(Long rentalId, OffsetDateTime rentalDate, Long inventoryId, Long customerId,
+    public Rental(OffsetDateTime rentalDate, Long inventoryId, Long customerId,
                   OffsetDateTime returnDate, Long staffId) {
-        this.rentalId = rentalId;
         this.rentalDate = rentalDate;
         this.inventoryId = inventoryId;
         this.customerId = customerId;

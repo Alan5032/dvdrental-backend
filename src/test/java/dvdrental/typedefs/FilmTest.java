@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FilmTest {
 
-    private final Long filmId = 99999L;
     private final String filmTitle = "amazing name";
 
     private Film film1;
@@ -16,12 +15,7 @@ public class FilmTest {
     @BeforeEach
     void beforeEach() {
         film1 = new Film();
-        film2 = new Film(filmId, filmTitle);
-    }
-
-    @Test
-    void constructedGetId() {
-        assertEquals(filmId, film2.getFilmId());
+        film2 = new Film(filmTitle);
     }
 
     @Test
@@ -31,6 +25,7 @@ public class FilmTest {
 
     @Test
     void setFilmId() {
+        Long filmId = 99999L;
         film1.setFilmId(filmId);
         assertEquals(filmId, film1.getFilmId());
     }

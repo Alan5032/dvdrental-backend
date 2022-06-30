@@ -31,8 +31,8 @@ public class StoreServiceTest {
     @BeforeEach
     void beforeEach() {
         customers = new ArrayList<>();
-        customers.add(new Store(99999L, 88888L, 77777L));
-        customers.add(new Store(1L, 2L, 3L));
+        customers.add(new Store(88888L, 77777L));
+        customers.add(new Store(2L, 3L));
     }
 
     @Test

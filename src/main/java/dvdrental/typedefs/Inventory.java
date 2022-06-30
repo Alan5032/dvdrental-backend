@@ -1,19 +1,14 @@
 package dvdrental.typedefs;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "inventory")
 public class Inventory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventory_gen")
+    @SequenceGenerator(name = "inventory_gen", sequenceName = "inventory_inventory_id_seq", allocationSize = 1)
     @Column(name = "inventory_id")
     private Long inventoryId;
     @Column(name = "film_id")
@@ -26,8 +21,7 @@ public class Inventory {
     public Inventory() {
     }
 
-    public Inventory(Long inventoryId, Long filmId, Long storeId) {
-        this.inventoryId = inventoryId;
+    public Inventory(Long filmId, Long storeId) {
         this.filmId = filmId;
         this.storeId = storeId;
     }

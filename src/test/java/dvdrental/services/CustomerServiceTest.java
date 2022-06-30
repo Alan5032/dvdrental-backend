@@ -31,8 +31,8 @@ public class CustomerServiceTest {
     @BeforeEach
     void beforeEach() {
         customers = new ArrayList<>();
-        customers.add(new Customer(99999L, 88888L, "First", "Last", "email", 77777L));
-        customers.add(new Customer(1L, 2L, "Bob", "Jones", "email.com", 3L));
+        customers.add(new Customer(88888L, "First", "Last", "email", 77777L));
+        customers.add(new Customer(2L, "Bob", "Jones", "email.com", 3L));
     }
 
     @Test

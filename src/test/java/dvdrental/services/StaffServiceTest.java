@@ -31,8 +31,8 @@ public class StaffServiceTest {
     @BeforeEach
     void beforeEach() {
         staffs = new ArrayList<>();
-        staffs.add(new Staff(99999L, "First", "Last", 88888L, "email", 77777L, "username", "password"));
-        staffs.add(new Staff(1L, "Bob", "Jones", 2L, "email.com", 3L, "user", "pass"));
+        staffs.add(new Staff("First", "Last", 88888L, "email", 77777L, "username", "password"));
+        staffs.add(new Staff("Bob", "Jones", 2L, "email.com", 3L, "user", "pass"));
     }
 
     @Test

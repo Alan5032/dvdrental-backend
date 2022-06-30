@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InventoryTest {
 
-    private final Long inventoryId = 88888L;
     private final Long filmId = 99999L;
     private final String filmTitle = "amazing name";
     private final Long storeId = 77777L;
@@ -18,12 +17,7 @@ public class InventoryTest {
     @BeforeEach
     void beforeEach() {
         inventory1 = new Inventory();
-        inventory2 = new Inventory(inventoryId, filmId, storeId);
-    }
-
-    @Test
-    void constructedGetInventoryId() {
-        assertEquals(inventoryId, inventory2.getInventoryId());
+        inventory2 = new Inventory(filmId, storeId);
     }
 
     @Test
@@ -44,6 +38,7 @@ public class InventoryTest {
 
     @Test
     void setInventoryId() {
+        Long inventoryId = 88888L;
         inventory1.setInventoryId(inventoryId);
         assertEquals(inventoryId, inventory1.getInventoryId());
     }

@@ -36,15 +36,15 @@ public class InventoryServiceTest {
     @BeforeEach
     void beforeEach() {
         inventories = new ArrayList<>();
-        inventories.add(new Inventory(99999L, 88888L, 77777L));
-        inventories.add(new Inventory(1L, 2L, 3L));
+        inventories.add(new Inventory(88888L, 77777L));
+        inventories.add(new Inventory(2L, 3L));
     }
 
     @Test
     void getAll() {
         Mockito.when(invRepo.findAll()).thenReturn(inventories);
-        Mockito.when(filmRepo.findById(88888L)).thenReturn(Optional.of(new Film(50L, "New Film")));
-        Mockito.when(filmRepo.findById(2L)).thenReturn(Optional.of(new Film(51L, "Old Film")));
+        Mockito.when(filmRepo.findById(88888L)).thenReturn(Optional.of(new Film("New Film")));
+        Mockito.when(filmRepo.findById(2L)).thenReturn(Optional.of(new Film("Old Film")));
 
         service.getAll();
 
@@ -58,7 +58,7 @@ public class InventoryServiceTest {
     @Test
     void get() {
         Mockito.when(invRepo.findById(1L)).thenReturn(Optional.ofNullable(inventories.get(1)));
-        Mockito.when(filmRepo.findById(2L)).thenReturn(Optional.of(new Film(51L, "Old Film")));
+        Mockito.when(filmRepo.findById(2L)).thenReturn(Optional.of(new Film("Old Film")));
 
         service.get(1L);
 
@@ -84,7 +84,7 @@ public class InventoryServiceTest {
     @Test
     void update() {
         Mockito.when(invRepo.findById(1L)).thenReturn(Optional.ofNullable(inventories.get(1)));
-        Mockito.when(filmRepo.findById(1L)).thenReturn(Optional.of(new Film(51L, "Old Film")));
+        Mockito.when(filmRepo.findById(1L)).thenReturn(Optional.of(new Film("Old Film")));
 
         service.update(1L, 1L, "Old Film", 1L);
 

@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RentalTest {
 
-    private final Long rentalId = 88888L;
     private final Long inventoryId = 99999L;
     private final Long customerId = 77777L;
     private final Long staffId = 66666L;
@@ -22,12 +21,7 @@ public class RentalTest {
     @BeforeEach
     void beforeEach() {
         rental1 = new Rental();
-        rental2 = new Rental(rentalId, time, inventoryId, customerId, time, staffId);
-    }
-
-    @Test
-    void constructedGetRentalId() {
-        assertEquals(rentalId, rental2.getRentalId());
+        rental2 = new Rental(time, inventoryId, customerId, time, staffId);
     }
 
     @Test
@@ -57,6 +51,7 @@ public class RentalTest {
 
     @Test
     void setRentalId() {
+        Long rentalId = 88888L;
         rental1.setRentalId(rentalId);
         assertEquals(rentalId, rental1.getRentalId());
     }

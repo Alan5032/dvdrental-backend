@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StoreTest {
 
-    private final Long storeId = 99999L;
     private final Long managerId = 88888L;
     private final Long addressId = 77777L;
 
@@ -17,12 +16,7 @@ public class StoreTest {
     @BeforeEach
     void beforeEach() {
         store1 = new Store();
-        store2 = new Store(storeId, managerId, addressId);
-    }
-
-    @Test
-    void constructedGetStoreId() {
-        assertEquals(storeId, store2.getStoreId());
+        store2 = new Store(managerId, addressId);
     }
 
     @Test
@@ -37,6 +31,7 @@ public class StoreTest {
 
     @Test
     void setStoreId() {
+        Long storeId = 99999L;
         store1.setStoreId(storeId);
         assertEquals(storeId, store1.getStoreId());
     }
