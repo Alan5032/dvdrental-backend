@@ -3,6 +3,8 @@ package dvdrental.controllers;
 import dvdrental.services.*;
 import dvdrental.typedefs.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,8 +52,12 @@ public class DVDController {
     }
 
     @PostMapping(value = "/staffs")
-    public void addStaff(@RequestBody Staff staff) {
+    public ResponseEntity<String> addStaff(@RequestBody Staff staff) {
         staffService.add(staff);
+        return new ResponseEntity<>(
+                "staffId: " + staff.getStaffId(),
+                HttpStatus.OK
+        );
     }
 
     @DeleteMapping(value = "/staffs/{staffId}")
@@ -80,8 +86,12 @@ public class DVDController {
     }
 
     @PostMapping(value = "/customers")
-    public void addCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<String> addCustomer(@RequestBody Customer customer) {
         customerService.add(customer);
+        return new ResponseEntity<>(
+                "customerId: " + customer.getCustomerId(),
+                HttpStatus.OK
+        );
     }
 
     @DeleteMapping(value = "/customers/{customerId}")
@@ -110,8 +120,12 @@ public class DVDController {
     }
 
     @PostMapping(value = "/locations")
-    public void addLocation(@RequestBody Store store) {
+    public ResponseEntity<String> addLocation(@RequestBody Store store) {
         storeService.add(store);
+        return new ResponseEntity<>(
+                "storeId: " + store.getStoreId(),
+                HttpStatus.OK
+        );
     }
 
     @DeleteMapping(value = "/locations/{storeId}")
@@ -136,8 +150,12 @@ public class DVDController {
     }
 
     @PostMapping(value = "/rentals")
-    public void addRental(@RequestBody Rental rental) {
+    public ResponseEntity<String> addRental(@RequestBody Rental rental) {
         rentalService.add(rental);
+        return new ResponseEntity<>(
+                "rentalId: " + rental.getRentalId(),
+                HttpStatus.OK
+        );
     }
 
     @DeleteMapping(value = "/rentals/{rentalId}")
@@ -166,8 +184,12 @@ public class DVDController {
     }
 
     @PostMapping(value = "/inventory")
-    public void addInventory(@RequestBody Inventory inventory) {
+    public ResponseEntity<String> addInventory(@RequestBody Inventory inventory) {
         inventoryService.add(inventory);
+        return new ResponseEntity<>(
+                "inventoryId: " + inventory.getInventoryId(),
+                HttpStatus.OK
+        );
     }
 
     @DeleteMapping(value = "/inventory/{inventoryId}")
